@@ -1,9 +1,9 @@
-
 import os
 from pathlib import Path
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 SECRET_KEY = os.environ.get(
     "SECRET_KEY",
@@ -14,6 +14,7 @@ DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -21,25 +22,31 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     "rest_framework",
     "corsheaders",
     "trips",
 ]
 
+
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
+
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-   
+
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+
 ROOT_URLCONF = "config.urls"
+
 
 TEMPLATES = [
     {
@@ -57,13 +64,18 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = "config.wsgi.application"
 
+
+# Database
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
 if DATABASE_URL:
-    DATABASES = {"default": dj_database_url.parse(DATABASE_URL)}
+    DATABASES = {
+        "default": dj_database_url.parse(DATABASE_URL)
+    }
 else:
     DATABASES = {
         "default": {
@@ -73,61 +85,124 @@ else:
     }
 
 
+# Password validation
+
 AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
+    {
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"
+    },
 ]
 
+
+# Internationalization
+
 LANGUAGE_CODE = "en-us"
+
 TIME_ZONE = "UTC"
+
 USE_I18N = True
+
 USE_TZ = True
 
+
+# Static files
+
 STATIC_URL = "static/"
+
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
 STORAGES = {
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
 
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-CORS_ALLOWED_ORIGINS = os.environ.get(
-    "CORS_ALLOWED_ORIGINS",
+# ===========================
+# CORS CONFIGURATION
+# ===========================
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+
     "https://milepost-trip-planner-87xt-9p2oyg6s2-mairas-projects-74301050.vercel.app",
-    "http://localhost:5173,http://127.0.0.1:5173",
-).split(",")
+]
 
-##CORS_ALLOW_ALL_ORIGINS = os.environ.get("CORS_ALLOW_ALL_ORIGINS", "False") == "True"
-CORS_ALLOW_ALL_ORIGINS = True
 
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOW_ALL_ORIGINS = False
+
+
+# CSRF trusted frontend
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://milepost-trip-planner-87xt-9p2oyg6s2-mairas-projects-74301050.vercel.app",
+]
+
+
+# ===========================
+# Django REST Framework
+# ===========================
 
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
     ],
+
     "DEFAULT_PARSER_CLASSES": [
         "rest_framework.parsers.JSONParser",
     ],
+
     "EXCEPTION_HANDLER": "trips.utils.exception_handler.custom_exception_handler",
 }
 
 
-OPENROUTESERVICE_API_KEY = os.environ.get("OPENROUTESERVICE_API_KEY", "")
+# ===========================
+# External APIs
+# ===========================
 
-# HOS (Hours of Service) constants for property-carrying drivers
-HOS_MAX_DRIVING_HOURS = 11          # Max driving hours per shift
-HOS_MAX_ON_DUTY_WINDOW = 14         # Max on-duty window per shift
-HOS_MIN_OFF_DUTY_HOURS = 10         # Min consecutive off-duty hours required
-HOS_BREAK_AFTER_HOURS = 8           # 30-min break required after this many driving hours
+OPENROUTESERVICE_API_KEY = os.environ.get(
+    "OPENROUTESERVICE_API_KEY",
+    ""
+)
+
+
+# ===========================
+# HOS (Hours of Service)
+# ===========================
+
+HOS_MAX_DRIVING_HOURS = 11
+
+HOS_MAX_ON_DUTY_WINDOW = 14
+
+HOS_MIN_OFF_DUTY_HOURS = 10
+
+HOS_BREAK_AFTER_HOURS = 8
+
 HOS_BREAK_DURATION_MINUTES = 30
-HOS_CYCLE_MAX_HOURS = 70            # 70-hour / 8-day cycle
+
+HOS_CYCLE_MAX_HOURS = 70
+
 HOS_CYCLE_DAYS = 8
+
 HOS_FUEL_INTERVAL_MILES = 1000
+
 HOS_PICKUP_DURATION_HOURS = 1
+
 HOS_DROPOFF_DURATION_HOURS = 1
+
 HOS_AVERAGE_SPEED_MPH = 55
