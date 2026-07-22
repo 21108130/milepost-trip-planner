@@ -1,0 +1,115 @@
+.home-hero {
+  position: relative;
+  padding: 72px 24px 96px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.home-hero::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 640px;
+  height: 320px;
+  background: radial-gradient(ellipse at center, var(--orange-soft) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.home-hero__inner {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.home-hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--orange);
+  background: var(--orange-soft);
+  border: 1px solid rgba(255, 106, 26, 0.3);
+  padding: 7px 16px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 28px;
+}
+
+.home-hero__title {
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.12;
+  color: #fff;
+  font-weight: 800;
+}
+
+.home-hero__accent {
+  color: var(--orange);
+}
+
+.home-hero__subtitle {
+  margin: 22px auto 0;
+  max-width: 540px;
+  color: var(--text-secondary);
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+
+.home-page__content {
+  max-width: 900px;
+  margin: -44px auto 64px;
+  padding: 0 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.home-page__error {
+  margin-top: -8px;
+}
+
+.home-page__how-it-works {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 720px) {
+  .home-page__how-it-works {
+    grid-template-columns: 1fr;
+  }
+}
+
+.how-it-works__step {
+  display: flex;
+  gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+}
+
+.how-it-works__number {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--orange);
+  line-height: 1;
+}
+
+.how-it-works__title {
+  font-size: 14.5px;
+  margin-bottom: 4px;
+  color: var(--text-primary);
+}
+
+.how-it-works__description {
+  margin: 0;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}

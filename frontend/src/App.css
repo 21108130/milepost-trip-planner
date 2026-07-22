@@ -1,0 +1,32 @@
+.app-main {
+  flex: 1;
+}
+
+.app-footer {
+  background: var(--page-bg);
+  color: var(--text-muted);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 18px 24px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  border-top: 1px solid var(--border);
+}
+
+.app-not-found {
+  max-width: 480px;
+  margin: 96px auto;
+  text-align: center;
+  padding: 0 24px;
+}
+
+.app-not-found h1 {
+  font-size: 64px;
+  color: var(--orange);
+}
+
+.app-not-found p {
+  color: var(--text-secondary);
+}

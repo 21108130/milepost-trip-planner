@@ -1,0 +1,131 @@
+.navbar {
+  background: rgba(10, 10, 13, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar__mark {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 15px;
+  color: var(--text-on-orange);
+  background: var(--orange);
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  letter-spacing: -0.02em;
+}
+
+.navbar__title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.navbar__links {
+  display: flex;
+  gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: 4px;
+}
+
+.navbar__link {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+
+.navbar__link:hover {
+  color: var(--text-primary);
+}
+
+.navbar__link.is-active {
+  background: var(--orange);
+  color: var(--text-on-orange);
+  font-weight: 600;
+}
+
+.navbar__link.is-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.navbar__meta {
+  display: flex;
+}
+
+.navbar__meta-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  color: var(--text-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 7px 14px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.navbar__meta-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 3px var(--green-soft);
+}
+
+@media (max-width: 860px) {
+  .navbar__meta {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar__inner {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .navbar__links {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .navbar__link {
+    flex: 1;
+    text-align: center;
+    padding: 8px 6px;
+  }
+}

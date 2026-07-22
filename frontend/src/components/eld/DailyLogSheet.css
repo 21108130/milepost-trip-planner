@@ -1,0 +1,86 @@
+.log-sheet {
+  padding: 4px 0 8px;
+}
+
+.log-sheet__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.log-sheet__day {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.log-sheet__date {
+  font-size: 19px;
+  margin-top: 4px;
+  color: var(--text-primary);
+}
+
+.log-sheet__route-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.log-sheet__route-arrow {
+  color: var(--orange);
+}
+
+.log-sheet__totals {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.log-sheet__total {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 96px;
+  border-bottom: 3px solid var(--border-strong);
+}
+
+.log-sheet__total--amber {
+  border-bottom-color: var(--orange);
+}
+
+.log-sheet__total--red {
+  border-bottom-color: var(--red);
+}
+
+.log-sheet__total-value {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.log-sheet__total-suffix {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: 2px;
+}
+
+.log-sheet__total-label {
+  font-size: 10.5px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
