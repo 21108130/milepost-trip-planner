@@ -138,7 +138,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
 
-    "https://milepost-trip-planner-87xt-9p2oyg6s2-mairas-projects-74301050.vercel.app",
+    "https://milepost-trip-planner-fzqjnvmmp-mairas-projects-74301050.vercel.app/",
 ]
 
 
