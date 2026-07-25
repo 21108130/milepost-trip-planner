@@ -135,29 +135,9 @@ can't be planned, 404 if not found).
 
 ---
 
-## 5. Deployment
 
-### Backend → Render
 
-1. Push `backend/` to GitHub.
-2. In Render, "New +" → "Blueprint", point it at the repo — `render.yaml` is
-   already configured (installs requirements, runs migrations, starts
-   gunicorn).
-3. Set `CORS_ALLOWED_ORIGINS` to your deployed frontend URL once you have it
-   (or leave `CORS_ALLOW_ALL_ORIGINS=True` for a quick demo).
-
-### Frontend → Vercel
-
-1. Push `frontend/` to GitHub (or import the monorepo and set the project
-   root to `frontend/`).
-2. Set the environment variable `VITE_API_BASE_URL` to your deployed backend's
-   `/api` URL (e.g. `https://trip-planner-backend.onrender.com/api`).
-3. Deploy — `vercel.json` handles SPA routing so refreshing `/trips/1/logs`
-   doesn't 404.
-
----
-
-## 6. Notes on the free map APIs
+## 5. Notes on the free map APIs
 
 - **Geocoding**: [Nominatim](https://nominatim.openstreetmap.org/) (OpenStreetMap) — free, no API key, rate-limited to ~1 request/second (handled automatically).
 - **Routing**: [OSRM](http://router.project-osrm.org/) public demo server — free, no API key, returns real driving distances, durations, geometry, and turn-by-turn steps.
@@ -169,7 +149,7 @@ places that would need to change.
 
 ---
 
-## 7. Tech decisions worth knowing about
+## 6. Tech decisions worth knowing about
 
 - **SQLite in dev, Postgres-ready**: `DATABASE_URL` env var switches to
   Postgres automatically via `dj-database-url` — no code changes needed.
